@@ -4,7 +4,7 @@ const dom = {
     root : document.getElementById('root'),
     btn : document.getElementById('btn'),
 };
-export default dom;
+
 
 
 // APIs
@@ -40,7 +40,8 @@ const createJoke = (jokeText) => {
 
     // type 
     const jokeType = document.createElement('h2');
-    jokeType.innerHTML= jokeText.jokeType;
+    jokeType.className = 'type';
+    jokeType.innerText= jokeText.jokeType;
 
 
     // joke text
@@ -53,7 +54,12 @@ const createJoke = (jokeText) => {
      const delivery = document.createElement('p');
      delivery.innerText = jokeText.delivery;
 
- 
+ // flags
+  const flags = document.createElement('ul');
+  flags.className = 'flagsList';
+  flags.id = 'flags';
+
+
     //  append
 
 container.append(category, jokeType, setup, delivery);
