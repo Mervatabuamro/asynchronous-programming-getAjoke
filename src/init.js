@@ -41,7 +41,7 @@ const createJoke = (jokeText) => {
     // type 
     const jokeType = document.createElement('h2');
     jokeType.className = 'type';
-    jokeType.innerText= jokeText.jokeType;
+    jokeType.innerText= jokeText.type === 'twopart' ? 'Two-Part Joke' : 'One-part Joke';
 
 
     // joke text
@@ -59,10 +59,16 @@ const createJoke = (jokeText) => {
   flags.className = 'flagsList';
   flags.id = 'flags';
 
+  for (const [key,value] of Object.entries(jokeText.flags)){
+    const flagType = document.createElement('li');
+    flagType.innerText = key + ':' + value;
+    flags.appendChild(flagType);
+  }
+
 
     //  append
 
-container.append(category, jokeType, setup, delivery);
+container.append(category, jokeType, setup, delivery, flags);
 return container;
 
 };
