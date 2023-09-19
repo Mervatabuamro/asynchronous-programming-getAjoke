@@ -21,12 +21,22 @@ const createJoke = (jokeText) => {
     // joke text
 
     const setup = document.createElement('p');
+    setup.className = 'setup';
     setup.innerText = jokeText.setup;
+    container.append(setup);
 
-    //delivery
+    //delivery, joke is two part
+     if (jokeText.type === 'twopart'){
+      const delivery = document.createElement('p');
+      delivery.className = 'second-part';
+      delivery.innerText = jokeText.delivery;
+      container.append(setup, delivery);
 
-    const delivery = document.createElement('p');
-    delivery.innerText = jokeText.delivery;
+     } else{
+      setup.innerText = jokeText.joke;
+     }
+
+    
 
     // flags
     const flags = document.createElement('ul');
@@ -41,7 +51,7 @@ const createJoke = (jokeText) => {
 
     //  append
 
-    container.append(category, jokeType, setup, delivery, flags);
+    container.append(category, jokeType, flags);
     return container;
 };
 
